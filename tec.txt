@@ -1,0 +1,2 @@
+ ./vendor/bin/sail npm run dev
+ ./vendor/bin/sail up -d

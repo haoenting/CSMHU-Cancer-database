@@ -1,0 +1,10 @@
+export { default as Basic_information } from './Basic_information';
+export { default as Past_History }from './Past_History';
+export { default as Initial_Symptoms }from './Initial_Symptoms';
+export { default as Preoperative_Assessment } from './Preoperative_Assessment';
+export { default as Preoperative_Treatment } from './Preoperative_Treatment';
+export { default as CCRT } from './CCRT';
+export { default as Surgery } from './Surgery';
+export { default as Postoperative_Condition } from './Postoperative_Condition';
+export { default as Pathology } from './Pathology';
+export { default as Tracking } from './Tracking';

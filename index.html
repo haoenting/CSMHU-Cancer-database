@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f6b4e6, #b2c7ff);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background: white;
+            width: 380px;
+            padding: 40px 45px;
+            border-radius: 20px;
+            box-shadow: 0px 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .input-group label {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 8px 0;
+            border: none;
+            border-bottom: 1px solid #999;
+            outline: none;
+            font-size: 15px;
+            background: none;
+        }
+
+        .login-btn {
+            width: 100%;
+            border: none;
+            padding: 12px 0;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            background: linear-gradient(90deg, #9ab6ff, #f3b5d6);
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            opacity: 0.9;
+        }
+
+        .signup-text {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .signup-text a {
+            color: #659bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .signup-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+
+        <div class="input-group">
+            <label>username</label><br>
+            <input type="text" />
+        </div>
+
+        <div class="input-group">
+            <label>password</label><br>
+            <input type="password" />
+        </div>
+
+        <button class="login-btn">Login</button>
+
+        <p class="signup-text">
+            Don't have account? <a href="#">Sign up</a>
+        </p>
+    </div>
+</body>
+</html>

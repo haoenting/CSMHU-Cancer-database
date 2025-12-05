@@ -10,7 +10,7 @@
 
     
     {{-- React 掛載點 --}}
-    <div id="root"></div>
+    <div id="app"></div>
 
 
 </body>

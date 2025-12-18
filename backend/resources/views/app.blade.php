@@ -10,7 +10,8 @@
 
     
     {{-- React 掛載點 --}}
-    <div id="app"></div>
+    <div id="root"></div>
+  <script type="module" src="/resources/js/src/main.jsx"></script>
 
 
 </body>

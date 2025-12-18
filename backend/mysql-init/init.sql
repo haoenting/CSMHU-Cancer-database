@@ -1,0 +1,432 @@
+-- user database
+CREATE DATABASE IF NOT EXISTS `user_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS `patient_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+GRANT ALL PRIVILEGES ON user_db.* TO 'sail'@'%';
+GRANT ALL PRIVILEGES ON patient_db.* TO 'sail'@'%';
+FLUSH PRIVILEGES;
+-- employee table
+-- CREATE TABLE IF NOT EXISTS `user_db`.`employee` (
+--     `username` VARCHAR(20) NOT NULL,
+--     `account` VARCHAR(20) NOT NULL UNIQUE,
+--     `password` VARCHAR(20) NOT NULL,
+--     `created_at` TIMESTAMP NULL DEFAULT NULL,
+--     `updated_at` TIMESTAMP NULL DEFAULT NULL,
+--     PRIMARY KEY (`account`)
+-- );
+
+-- -- actions table
+-- CREATE TABLE IF NOT EXISTS `user_db`.`actions` (
+--     `username` VARCHAR(255) NOT NULL,
+--     `action` VARCHAR(255) NOT NULL,
+--     `created_at` TIMESTAMP NULL DEFAULT NULL,
+--     `updated_at` TIMESTAMP NULL DEFAULT NULL
+-- );
+
+
+-- patient database
+-- -- Basic_information
+-- CREATE TABLE IF NOT EXISTS `patient_db`.`Basic_information` (
+--     `Chart` VARCHAR(255) PRIMARY KEY,
+--     `ID` VARCHAR(255) DEFAULT '',
+--     `Name` VARCHAR(255) DEFAULT '',
+--     `Gender` VARCHAR(50) DEFAULT '',
+--     `Birthday` DATE,
+--     `Age` INT,
+--     `Height` VARCHAR(255),
+--     `Weight` VARCHAR(255),
+--     `BMI` VARCHAR(255),
+--     `Diagnosis_date` DATE,
+--     `Obstruction` TINYINT(1) DEFAULT 0,
+--     `Bleeding` TINYINT(1) DEFAULT 0,
+--     `Perforation2` TINYINT(1) DEFAULT 0,
+--     `Peritonitis` TINYINT(1) DEFAULT 0,
+--     `Sepsis` TINYINT(1) DEFAULT 0,
+--     `Shock` TINYINT(1) DEFAULT 0,
+--     `Bowel_perforation` TINYINT(1) DEFAULT 0,
+--     `Fever` TINYINT(1) DEFAULT 0,
+--     `Pneumonia` TINYINT(1) DEFAULT 0,
+--     `Ileus` TINYINT(1) DEFAULT 0
+-- );
+
+-- -- Past_History
+-- CREATE TABLE IF NOT EXISTS `patient_db`.`Past_History` (
+--     `basic_information_id` VARCHAR(255) NOT NULL,
+--     `DM` BOOLEAN DEFAULT FALSE,
+--     `HTM` BOOLEAN DEFAULT FALSE,
+--     `CVA` BOOLEAN DEFAULT FALSE,
+--     `CAD` BOOLEAN DEFAULT FALSE,
+--     `COPD` BOOLEAN DEFAULT FALSE,
+--     `CHF` BOOLEAN DEFAULT FALSE,
+--     `Liver_cirrhosis` BOOLEAN DEFAULT FALSE,
+--     `Gout` BOOLEAN DEFAULT FALSE,
+--     `MD_other` VARCHAR(255) DEFAULT '',
+--     `Surgical_history` VARCHAR(255) DEFAULT '',
+--     `Smoking` VARCHAR(255) DEFAULT '',
+--     `Drinking` VARCHAR(255) DEFAULT '',
+--     `Betal_nut` VARCHAR(255) DEFAULT '',
+--     `Family_CRC_1` BOOLEAN DEFAULT FALSE,
+--     `Family_CRC_2` BOOLEAN DEFAULT FALSE,
+--     `Family_CRC_3` BOOLEAN DEFAULT FALSE,
+--     `Family_GI_cancer` BOOLEAN DEFAULT FALSE,
+--     `Family_other_cancer` VARCHAR(255) DEFAULT '',
+--     FOREIGN KEY (`basic_information_id`) REFERENCES `Basic_information`(`Chart`) ON DELETE CASCADE
+-- );
+
+-- -- Initial_Symptoms table
+-- CREATE TABLE IF NOT EXISTS `patient_db`.`Initial_Symptoms` (
+--     `basic_information_id` VARCHAR(255) NOT NULL,
+--     `Stool_OB` BOOLEAN DEFAULT FALSE,
+--     `Colonoscocopy` BOOLEAN DEFAULT FALSE,
+--     `CEA` BOOLEAN DEFAULT FALSE,
+--     `CT` BOOLEAN DEFAULT FALSE,
+--     `MRI` BOOLEAN DEFAULT FALSE,
+--     `PET` BOOLEAN DEFAULT FALSE,
+--     `Fresh_blood` BOOLEAN DEFAULT FALSE,
+--     `Bloody_stool` BOOLEAN DEFAULT FALSE,
+--     `Melanoma` BOOLEAN DEFAULT FALSE,
+--     `Small_caliber_of_stool` BOOLEAN DEFAULT FALSE,
+--     `Tenesmus` BOOLEAN DEFAULT FALSE,
+--     `Constipation` BOOLEAN DEFAULT FALSE,
+--     `Diarrhea` BOOLEAN DEFAULT FALSE,
+--     `Mucus_passage` BOOLEAN DEFAULT FALSE,
+--     `Abdomen_pain` BOOLEAN DEFAULT FALSE,
+--     `Abdomen_distention` BOOLEAN DEFAULT FALSE,
+--     `Abdomen_fullness` BOOLEAN DEFAULT FALSE,
+--     `Abdomen_mass` BOOLEAN DEFAULT FALSE,
+--     `Vomiting` BOOLEAN DEFAULT FALSE,
+--     `Loss_appetite` BOOLEAN DEFAULT FALSE,
+--     `Anemia` BOOLEAN DEFAULT FALSE,
+--     `weight_loss` VARCHAR(255) DEFAULT '',
+--     `Peritonitis` BOOLEAN DEFAULT FALSE,
+--     `Distal_metastasis` VARCHAR(255) DEFAULT '',
+--     `Other_SS` VARCHAR(255) DEFAULT '',
+--     `Duration_Initial_symptom` VARCHAR(255) DEFAULT '',
+--     FOREIGN KEY (`basic_information_id`) REFERENCES `Basic_information`(`Chart`) ON DELETE CASCADE
+-- );
+
+-- -- Preoperative Assessment
+-- CREATE TABLE IF NOT EXISTS `patient_db`.`Preoperative_Assessment` (
+--     `basic_information_id` VARCHAR(255) NOT NULL,
+--     `Hemoglobin` VARCHAR(255) DEFAULT '', `WBC` VARCHAR(255) DEFAULT '', `Platelet` VARCHAR(255) DEFAULT '',
+--     `GOT` VARCHAR(255) DEFAULT '', `GPT` VARCHAR(255) DEFAULT '', `ALk` VARCHAR(255) DEFAULT '',
+--     `BilT` VARCHAR(255) DEFAULT '', `BilD` VARCHAR(255) DEFAULT '', `Albumin` VARCHAR(255) DEFAULT '',
+--     `BUN` VARCHAR(255) DEFAULT '', `Creatinine` VARCHAR(255) DEFAULT '', `Na` VARCHAR(255) DEFAULT '',
+--     `K` VARCHAR(255) DEFAULT '', `PT` VARCHAR(255) DEFAULT '', `APTT` VARCHAR(255) DEFAULT '',
+--     `INR` VARCHAR(255) DEFAULT '', `CEA` VARCHAR(255) DEFAULT '', `CA125` VARCHAR(255) DEFAULT '',
+--     `CA199` VARCHAR(255) DEFAULT '', `Other4_1` VARCHAR(255) DEFAULT '', `Stool_OB2` VARCHAR(255) DEFAULT '',
+--     `Bone_scan` VARCHAR(255) DEFAULT '', `MRI2` BOOLEAN DEFAULT FALSE, `PET_scan` VARCHAR(255) DEFAULT '',
+--     `Scopy` VARCHAR(255) DEFAULT '', `Scopy_c` VARCHAR(255) DEFAULT '', `Up_to` VARCHAR(255) DEFAULT '',
+--     `Obstruction` VARCHAR(255) DEFAULT '', `Tumor_location` VARCHAR(255) DEFAULT '', `Distence_from_AV` VARCHAR(255) DEFAULT '',
+--     `Polyps1` BOOLEAN DEFAULT FALSE, `CXR` VARCHAR(255) DEFAULT '', `Polyps2` BOOLEAN DEFAULT FALSE,
+--     `Abdominal_sonography` VARCHAR(255) DEFAULT '', `Noudle_number` VARCHAR(255) DEFAULT '',
+--     `Other4_3` VARCHAR(255) DEFAULT '', `Other4_4` VARCHAR(255) DEFAULT '',
+--     FOREIGN KEY (`basic_information_id`) REFERENCES `Basic_information`(`Chart`) ON DELETE CASCADE
+-- );
+
+-- -- Preoperative Treatment
+-- CREATE TABLE `Preoperative_Treatment` (
+--     `basic_information_id` VARCHAR(255),
+--     `Albumin2` TINYINT(1) DEFAULT 0,
+--     `PPN` TINYINT(1) DEFAULT 0,
+--     `TPN` TINYINT(1) DEFAULT 0,
+--     `days` VARCHAR(255) DEFAULT '',
+--     `P_RBC` VARCHAR(255) DEFAULT '',
+--     `Whole_blood` VARCHAR(255) DEFAULT '',
+--     `FFP` VARCHAR(255) DEFAULT '',
+--     `Platelet` VARCHAR(255) DEFAULT '',
+--     `Colon_preparation_Type` VARCHAR(255) DEFAULT '',
+--     `Laxativs` VARCHAR(255) DEFAULT '',
+--     `Oral_antibiotics` TINYINT(1) DEFAULT 0,
+--     `Retention_enema` TINYINT(1) DEFAULT 0,
+--     `Cafazolin` TINYINT(1) DEFAULT 0,
+--     `Gentamicin` TINYINT(1) DEFAULT 0,
+--     `Metronidazole` TINYINT(1) DEFAULT 0,
+--     `Pre_OP_Other` VARCHAR(255) DEFAULT '',
+--     CONSTRAINT `fk_preop_basic_info`
+--         FOREIGN KEY (`basic_information_id`)
+--         REFERENCES `Basic_information` (`Chart`)
+--         ON DELETE CASCADE
+-- );
+
+-- -- CCRT table
+-- CREATE TABLE IF NOT EXISTS `patient_db`.`CCRT` (
+--     `basic_information_id` VARCHAR(20) NOT NULL,
+--     `UFT` BOOLEAN DEFAULT FALSE,
+--     `Xeloda` BOOLEAN DEFAULT FALSE,
+--     `Neoadjavent_dose` VARCHAR(255) DEFAULT '',
+--     `Side_effect` VARCHAR(255) DEFAULT '',
+--     `Time_to_surgery` VARCHAR(255) DEFAULT '',
+--     FOREIGN KEY (`basic_information_id`) REFERENCES `Basic_information`(`Chart`) ON DELETE CASCADE
+-- );
+
+
+-- -- Surgery
+-- CREATE TABLE `Surgery` (
+--     `basic_information_id` VARCHAR(255),
+--     `Operatin_date` DATE,
+--     `OP_method1` VARCHAR(255) DEFAULT '',
+--     `OP_method2` VARCHAR(255) DEFAULT '',
+--     `Extent_of_sugery` VARCHAR(255) DEFAULT '',
+--     `Anesthesia_type` VARCHAR(255) DEFAULT '',
+--     `OP_time` VARCHAR(255) DEFAULT '',
+--     `Blood_loss` VARCHAR(255) DEFAULT '',
+--     `P_RBC2` VARCHAR(255) DEFAULT '',
+--     `Whole_blood2` VARCHAR(255) DEFAULT '',
+--     `FFP2` VARCHAR(255) DEFAULT '',
+--     `Platelet2` VARCHAR(255) DEFAULT '',
+--     `Type_of_incision` VARCHAR(255) DEFAULT '',
+--     `Ascitis_color` VARCHAR(255) DEFAULT '',
+--     `Synchronous_colonic_tumor_site` VARCHAR(255) DEFAULT '',
+--     `Peritoneal_seeding` TINYINT(1) DEFAULT 0,
+--     `Tumor_site` VARCHAR(255) DEFAULT '',
+--     `Type_of_Anastomosis` VARCHAR(255) DEFAULT '',
+--     `Anastomosis_to_anal_verge` VARCHAR(255) DEFAULT '',
+--     `Distal_distence` VARCHAR(255) DEFAULT '',
+--     `Tumor_long` VARCHAR(255) DEFAULT '',
+--     `Tumor_wide` VARCHAR(255) DEFAULT '',
+--     `Tumor_High` VARCHAR(255) DEFAULT '',
+--     `Type_of_tumor` VARCHAR(255) DEFAULT '',
+--     `Perforation` TINYINT(1) DEFAULT 0,
+--     `Obstruction2` TINYINT(1) DEFAULT 0,
+--     `Invasion_other` VARCHAR(255) DEFAULT '',
+--     `Combined_resection` TINYINT(1) DEFAULT 0,
+--     `Palpable_LNs` VARCHAR(255) DEFAULT '',
+--     `Liver_nodule` VARCHAR(255) DEFAULT '',
+--     `Management` VARCHAR(255) DEFAULT '',
+--     `Protective_stoma` VARCHAR(255) DEFAULT '',
+--     `Intracolonic` TINYINT(1) DEFAULT 0,
+--     `Reason_of_palliative_TX` VARCHAR(255) DEFAULT '',
+--     CONSTRAINT `fk_surgery_basic_info`
+--         FOREIGN KEY (`basic_information_id`)
+--         REFERENCES `Basic_information` (`Chart`)
+--         ON DELETE CASCADE
+-- );
+
+-- -- Postoperative_Condition
+-- CREATE TABLE IF NOT EXISTS `patient_db`.`Postoperative_Condition` (
+--     `basic_information_id` VARCHAR(255) NOT NULL,
+--     `Cefazoline2` VARCHAR(255) DEFAULT '',
+--     `Gentamicin2` VARCHAR(255) DEFAULT '',
+--     `Metronidazole2` VARCHAR(255) DEFAULT '',
+--     `Antiobitics_other` VARCHAR(255) DEFAULT '',
+--     `DC4` VARCHAR(255) DEFAULT '',
+--     `NG` VARCHAR(255) DEFAULT '',
+--     `POD1` VARCHAR(255) DEFAULT '',
+--     `PCA` VARCHAR(255) DEFAULT '',
+--     `POD2` VARCHAR(255) DEFAULT '',
+--     `Flatus` VARCHAR(255) DEFAULT '',
+--     `Defecation` VARCHAR(255) DEFAULT '',
+--     `Try_water` VARCHAR(255) DEFAULT '',
+--     `Soft_diet` VARCHAR(255) DEFAULT '',
+--     `Surgical` VARCHAR(255) DEFAULT '',
+--     `Medical` VARCHAR(255) DEFAULT '',
+--     `Complication_other` VARCHAR(255) DEFAULT '',
+--     `Length_of_hospitalization` VARCHAR(255) DEFAULT '',
+--     `Discharge` VARCHAR(255) DEFAULT '',
+--     `Re_amission` BOOLEAN DEFAULT FALSE,
+--     `Motality` BOOLEAN DEFAULT FALSE,
+--     FOREIGN KEY (`basic_information_id`) REFERENCES `Basic_information`(`Chart`) ON DELETE CASCADE
+-- );
+
+-- -- Pathology
+-- CREATE TABLE IF NOT EXISTS `patient_db`.`Pathology` (
+--     `basic_information_id` VARCHAR(255) NOT NULL,
+--     `Tumor_long2` VARCHAR(255) DEFAULT '',
+--     `Tumor_wide2` VARCHAR(255) DEFAULT '',
+--     `Tumor_high2` VARCHAR(255) DEFAULT '',
+--     `Tumor_Type` VARCHAR(255) DEFAULT '',
+--     `Distal_Margin` VARCHAR(255) DEFAULT '',
+--     `Call_type` VARCHAR(255) DEFAULT '',
+--     `Differetiatnion` VARCHAR(255) DEFAULT '',
+--     `Lypmhatic` BOOLEAN DEFAULT FALSE,
+--     `Vascular` BOOLEAN DEFAULT FALSE,
+--     `Perineural` BOOLEAN DEFAULT FALSE,
+--     `Synchronous_Polypo` BOOLEAN DEFAULT FALSE,
+--     `Synchronous_cancer` BOOLEAN DEFAULT FALSE,
+--     `Cut_margin_condition` VARCHAR(255) DEFAULT '',
+--     `LN_examed` VARCHAR(255) DEFAULT '',
+--     `LN_involved` VARCHAR(255) DEFAULT '',
+--     `Final_T` VARCHAR(255) DEFAULT '',
+--     `Final_N` VARCHAR(255) DEFAULT '',
+--     `Final_M` VARCHAR(255) DEFAULT '',
+--     `Final_stage` VARCHAR(255) DEFAULT '',
+--     FOREIGN KEY (`basic_information_id`) REFERENCES `Basic_information`(`Chart`) ON DELETE CASCADE
+-- );
+
+-- -- Tracking
+-- -- Chemotherapy table
+-- CREATE TABLE IF NOT EXISTS `patient_db`.`Chemotherapy` (
+--     `basic_information_id` VARCHAR(255) NOT NULL,
+--     `start_1` DATE NULL, `end_1` DATE NULL, 
+--     `start_2` DATE NULL, `end_2` DATE NULL, 
+--     `start_3` DATE NULL, `end_3` DATE NULL,
+--     `start_4` DATE NULL, `end_4` DATE NULL, 
+--     `start_5` DATE NULL, `end_5` DATE NULL, 
+--     `start_6` DATE NULL, `end_6` DATE NULL,
+--     `start_7` DATE NULL, `end_7` DATE NULL, 
+--     `start_8` DATE NULL, `end_8` DATE NULL, 
+--     `start_9` DATE NULL, `end_9` DATE NULL,
+--     `start_10` DATE NULL, `end_10` DATE NULL,
+--     FOREIGN KEY (`basic_information_id`) REFERENCES `Basic_information`(`Chart`) ON DELETE CASCADE
+-- );
+
+-- -- Adjuvant_Radiotherapy table
+-- CREATE TABLE IF NOT EXISTS `patient_db`.`Adjuvant_Radiotherapy` (
+--     `basic_information_id` VARCHAR(255) NOT NULL,
+--     `s_1` DATE NULL, `e_1` DATE NULL, `d_1` VARCHAR(255) DEFAULT '',
+--     `s_2` DATE NULL, `e_2` DATE NULL, `d_2` VARCHAR(255) DEFAULT '',
+--     `s_3` DATE NULL, `e_3` DATE NULL, `d_3` VARCHAR(255) DEFAULT '',
+--     `s_4` DATE NULL, `e_4` DATE NULL, `d_4` VARCHAR(255) DEFAULT '',
+--     `s_5` DATE NULL, `e_5` DATE NULL, `d_5` VARCHAR(255) DEFAULT '',
+--     `s_6` DATE NULL, `e_6` DATE NULL, `d_6` VARCHAR(255) DEFAULT '',
+--     `s_7` DATE NULL, `e_7` DATE NULL, `d_7` VARCHAR(255) DEFAULT '', 
+--     `s_8` DATE NULL, `e_8` DATE NULL, `d_8` VARCHAR(255) DEFAULT '', 
+--     `s_9` DATE NULL, `e_9` DATE NULL, `d_9` VARCHAR(255) DEFAULT '', 
+--     `s_10` DATE NULL, `e_10` DATE NULL, `d_10` VARCHAR(255) DEFAULT '',
+--     FOREIGN KEY (`basic_information_id`) REFERENCES `Basic_information`(`Chart`) ON DELETE CASCADE
+-- );
+-- -- Tumor_maker
+-- CREATE TABLE `Tumor_maker` (
+--     `basic_information_id` VARCHAR(255),
+--     `Td_1` DATE,
+--     `TC_1` VARCHAR(255) DEFAULT '',
+--     `T125_1` VARCHAR(255) DEFAULT '',
+--     `T199_1` VARCHAR(255) DEFAULT '',
+--     `To_1` VARCHAR(255) DEFAULT '',
+--     `Td_2` DATE,
+--     `TC_2` VARCHAR(255) DEFAULT '',
+--     `T125_2` VARCHAR(255) DEFAULT '',
+--     `T199_2` VARCHAR(255) DEFAULT '',
+--     `To_2` VARCHAR(255) DEFAULT '',
+--     `Td_3` DATE,
+--     `TC_3` VARCHAR(255) DEFAULT '',
+--     `T125_3` VARCHAR(255) DEFAULT '',
+--     `T199_3` VARCHAR(255) DEFAULT '',
+--     `To_3` VARCHAR(255) DEFAULT '',
+--     `Td_4` DATE,
+--     `TC_4` VARCHAR(255) DEFAULT '',
+--     `T125_4` VARCHAR(255) DEFAULT '',
+--     `T199_4` VARCHAR(255) DEFAULT '',
+--     `To_4` VARCHAR(255) DEFAULT '',
+--     `Td_5` DATE,
+--     `TC_5` VARCHAR(255) DEFAULT '',
+--     `T125_5` VARCHAR(255) DEFAULT '',
+--     `T199_5` VARCHAR(255) DEFAULT '',
+--     `To_5` VARCHAR(255) DEFAULT '',
+--     `Td_6` DATE,
+--     `TC_6` VARCHAR(255) DEFAULT '',
+--     `T125_6` VARCHAR(255) DEFAULT '',
+--     `T199_6` VARCHAR(255) DEFAULT '',
+--     `To_6` VARCHAR(255) DEFAULT '',
+--     `Td_7` DATE,
+--     `TC_7` VARCHAR(255) DEFAULT '',
+--     `T125_7` VARCHAR(255) DEFAULT '',
+--     `T199_7` VARCHAR(255) DEFAULT '',
+--     `To_7` VARCHAR(255) DEFAULT '',
+--     `Td_8` DATE,
+--     `TC_8` VARCHAR(255) DEFAULT '',
+--     `T125_8` VARCHAR(255) DEFAULT '',
+--     `T199_8` VARCHAR(255) DEFAULT '',
+--     `To_8` VARCHAR(255) DEFAULT '',
+--     `Td_9` DATE,
+--     `TC_9` VARCHAR(255) DEFAULT '',
+--     `T125_9` VARCHAR(255) DEFAULT '',
+--     `T199_9` VARCHAR(255) DEFAULT '',
+--     `To_9` VARCHAR(255) DEFAULT '',
+--     `Td_10` DATE,
+--     `TC_10` VARCHAR(255) DEFAULT '',
+--     `T125_10` VARCHAR(255) DEFAULT '',
+--     `T199_10` VARCHAR(255) DEFAULT '',
+--     `To_10` VARCHAR(255) DEFAULT '',
+--     CONSTRAINT `fk_tumor_basic_info`
+--         FOREIGN KEY (`basic_information_id`)
+--         REFERENCES `Basic_information` (`Chart`)
+--         ON DELETE CASCADE
+-- );
+
+-- -- Colonoscopy
+-- CREATE TABLE `Colonoscopy` (
+--     `basic_information_id` VARCHAR(255),
+    
+--     `ACt_1` DATE,
+--     `ACF_1` VARCHAR(255) DEFAULT '',
+--     `ACPn_1` VARCHAR(255) DEFAULT '',
+--     `ACPs_1` VARCHAR(255) DEFAULT '',
+--     `ACo_1` VARCHAR(255) DEFAULT '',
+
+--     `ACt_2` DATE,
+--     `ACF_2` VARCHAR(255) DEFAULT '',
+--     `ACPn_2` VARCHAR(255) DEFAULT '',
+--     `ACPs_2` VARCHAR(255) DEFAULT '',
+--     `ACo_2` VARCHAR(255) DEFAULT '',
+
+--     `ACt_3` DATE,
+--     `ACF_3` VARCHAR(255) DEFAULT '',
+--     `ACPn_3` VARCHAR(255) DEFAULT '',
+--     `ACPs_3` VARCHAR(255) DEFAULT '',
+--     `ACo_3` VARCHAR(255) DEFAULT '',
+
+--     `ACt_4` DATE,
+--     `ACF_4` VARCHAR(255) DEFAULT '',
+--     `ACPn_4` VARCHAR(255) DEFAULT '',
+--     `ACPs_4` VARCHAR(255) DEFAULT '',
+--     `ACo_4` VARCHAR(255) DEFAULT '',
+
+--     `ACt_5` DATE,
+--     `ACF_5` VARCHAR(255) DEFAULT '',
+--     `ACPn_5` VARCHAR(255) DEFAULT '',
+--     `ACPs_5` VARCHAR(255) DEFAULT '',
+--     `ACo_5` VARCHAR(255) DEFAULT '',
+
+--     `ACt_6` DATE,
+--     `ACF_6` VARCHAR(255) DEFAULT '',
+--     `ACPn_6` VARCHAR(255) DEFAULT '',
+--     `ACPs_6` VARCHAR(255) DEFAULT '',
+--     `ACo_6` VARCHAR(255) DEFAULT '',
+
+--     `ACt_7` DATE,
+--     `ACF_7` VARCHAR(255) DEFAULT '',
+--     `ACPn_7` VARCHAR(255) DEFAULT '',
+--     `ACPs_7` VARCHAR(255) DEFAULT '',
+--     `ACo_7` VARCHAR(255) DEFAULT '',
+
+--     `ACt_8` DATE,
+--     `ACF_8` VARCHAR(255) DEFAULT '',
+--     `ACPn_8` VARCHAR(255) DEFAULT '',
+--     `ACPs_8` VARCHAR(255) DEFAULT '',
+--     `ACo_8` VARCHAR(255) DEFAULT '',
+
+--     `ACt_9` DATE,
+--     `ACF_9` VARCHAR(255) DEFAULT '',
+--     `ACPn_9` VARCHAR(255) DEFAULT '',
+--     `ACPs_9` VARCHAR(255) DEFAULT '',
+--     `ACo_9` VARCHAR(255) DEFAULT '',
+
+--     `ACt_10` DATE,
+--     `ACF_10` VARCHAR(255) DEFAULT '',
+--     `ACPn_10` VARCHAR(255) DEFAULT '',
+--     `ACPs_10` VARCHAR(255) DEFAULT '',
+--     `ACo_10` VARCHAR(255) DEFAULT '',
+
+--     CONSTRAINT `fk_colonoscopy_basic_info`
+--         FOREIGN KEY (`basic_information_id`)
+--         REFERENCES `Basic_information` (`Chart`)
+--         ON DELETE CASCADE
+-- );
+
+-- -- PET
+-- CREATE TABLE IF NOT EXISTS `patient_db`.`PET` (
+--     `basic_information_id` VARCHAR(255) NOT NULL,
+--     `PETt_1` DATE NULL, `PETf_1` VARCHAR(255) DEFAULT '', `PETo_1` VARCHAR(255) DEFAULT '',
+--     `PETt_2` DATE NULL, `PETf_2` VARCHAR(255) DEFAULT '', `PETo_2` VARCHAR(255) DEFAULT '',
+--     `PETt_3` DATE NULL, `PETf_3` VARCHAR(255) DEFAULT '', `PETo_3` VARCHAR(255) DEFAULT '',
+--     `PETt_4` DATE NULL, `PETf_4` VARCHAR(255) DEFAULT '', `PETo_4` VARCHAR(255) DEFAULT '',
+--     `PETt_5` DATE NULL, `PETf_5` VARCHAR(255) DEFAULT '', `PETo_5` VARCHAR(255) DEFAULT '',
+--     `PETt_6` DATE NULL, `PETf_6` VARCHAR(255) DEFAULT '', `PETo_6` VARCHAR(255) DEFAULT '',
+--     `PETt_7` DATE NULL, `PETf_7` VARCHAR(255) DEFAULT '', `PETo_7` VARCHAR(255) DEFAULT '',
+--     `PETt_8` DATE NULL, `PETf_8` VARCHAR(255) DEFAULT '', `PETo_8` VARCHAR(255) DEFAULT '',
+--     `PETt_9` DATE NULL, `PETf_9` VARCHAR(255) DEFAULT '', `PETo_9` VARCHAR(255) DEFAULT '',
+--     `PETt_10` DATE NULL, `PETf_10` VARCHAR(255) DEFAULT '', `PETo_10` VARCHAR(255) DEFAULT '',
+--     FOREIGN KEY (`basic_information_id`) REFERENCES `Basic_information`(`Chart`) ON DELETE CASCADE
+-- );

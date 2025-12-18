@@ -1,14 +1,16 @@
 // resources/js/main.jsx
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
+import { createRoot } from "react-dom/client";
 import App from './src/App'; // 你的主要 App 元件
 import "./src/styles/main.css";
+import { AuthProvider } from "./src/context/AuthContext";
 
-const rootEl = document.getElementById('app');
+const rootEl = document.getElementById("root");
 
-ReactDOM.createRoot(rootEl).render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
+createRoot(rootEl).render(
+  <BrowserRouter>
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  </BrowserRouter>
 );
